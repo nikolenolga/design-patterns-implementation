@@ -16,7 +16,6 @@ public class MessageBuilder {
     private String messageReceiverName;
     private Integer priority;
     private Locale language;
-    private Boolean isRead;
 
     public MessageBuilder id(Long id) {
         this.id = id;
@@ -58,11 +57,6 @@ public class MessageBuilder {
         return this;
     }
 
-    public MessageBuilder isRead(Boolean isRead) {
-        this.isRead = isRead;
-        return this;
-    }
-
     public MessageBuilder addAttachment(String attachment) {
         this.attachments.add(attachment);
         return this;
@@ -84,6 +78,6 @@ public class MessageBuilder {
 
         return new Message(id, type, messageTextBuilder.toString(),
                 messageDateTime, messageSenderName, messageReceiverName,
-                priority, language, isRead, attachments);
+                priority, language, attachments);
     }
 }

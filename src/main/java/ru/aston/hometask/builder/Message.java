@@ -22,13 +22,11 @@ public final class Message implements Cloneable {
     private final String messageReceiverName;
     private final Integer priority;
     private final Locale language;
-    private final Boolean isRead;
     private final List<String> attachments;
 
     Message(Long id, MessageType type, String messageText,
             LocalDateTime messageDateTime, String messageSenderName,
-            String messageReceiverName, Integer priority,
-            Locale language, Boolean isRead,
+            String messageReceiverName, Integer priority, Locale language,
             @NonNull List<String> attachments) {
         this.id = id;
         this.type = type;
@@ -38,7 +36,6 @@ public final class Message implements Cloneable {
         this.messageReceiverName = messageReceiverName;
         this.priority = priority;
         this.language = language;
-        this.isRead = isRead;
         this.attachments = new ArrayList<>(attachments);
     }
 
@@ -51,7 +48,6 @@ public final class Message implements Cloneable {
         this.messageReceiverName = other.messageReceiverName;
         this.priority = other.priority;
         this.language = other.language;
-        this.isRead = other.isRead;
         this.attachments = new ArrayList<>(other.attachments);
     }
 
