@@ -3,7 +3,7 @@ package ru.aston.hometask.decorator;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MessageDateFormatLoggerWriterDecorator extends BaseLoggerWriterDecorator{
+public class MessageDateFormatLoggerWriterDecorator extends BaseLoggerWriterDecorator {
     private static final String MESSAGE_FORMAT = "%s: %s";
     private final DateTimeFormatter dateTimeFormatter;
 

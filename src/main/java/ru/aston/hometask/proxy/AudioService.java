@@ -13,5 +13,4 @@ public class AudioService {
     public Audio saveAudio(Audio audio) {
         return audioRepository.saveAudio(audio).orElseThrow(() -> new RuntimeException("Audio not saved: %s".formatted(audio)));
     }
-
 }

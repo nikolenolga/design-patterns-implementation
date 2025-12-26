@@ -2,6 +2,7 @@ package ru.aston.hometask.chainOfResponsibility.filter;
 
 import ru.aston.hometask.chainOfResponsibility.Task;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class BoardTaskFilter extends BaseInterruptingTaskFilter {
@@ -13,6 +14,7 @@ public class BoardTaskFilter extends BaseInterruptingTaskFilter {
 
     @Override
     protected boolean isInterruptingRequired(Task task) {
-        return !boards.contains(task.getBoardName());
+        String boardName = task.getBoardName();
+        return Objects.isNull(boardName) || !boards.contains(boardName);
     }
 }

@@ -2,6 +2,7 @@ package ru.aston.hometask.chainOfResponsibility.filter;
 
 import ru.aston.hometask.chainOfResponsibility.Task;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class ColumnTaskFilter extends BaseInterruptingTaskFilter {
@@ -13,6 +14,7 @@ public class ColumnTaskFilter extends BaseInterruptingTaskFilter {
 
     @Override
     protected boolean isInterruptingRequired(Task task) {
-        return !columns.contains(task.getColumnName());
+        String columnName = task.getColumnName();
+        return Objects.isNull(columnName) || !columns.contains(columnName);
     }
 }
