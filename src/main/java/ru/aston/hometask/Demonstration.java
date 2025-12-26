@@ -31,7 +31,7 @@ public class Demonstration {
     }
 
     public static void demonstrateAdapter() {
-        System.out.println("ADAPTER PATTERN: create and use user service with adapter");
+        System.out.println("ADAPTER PATTERN: user service with adapter and print results");
         UserStorage userStorage = new UserStorage();
         userStorage.save(new User(null, "olga", "12345"));
         userStorage.save(new User(null, "sergey", "qwerty"));
@@ -42,7 +42,7 @@ public class Demonstration {
     }
 
     public static void demonstrateBuilder() {
-        System.out.println("BUILDER PATTERN: build message");
+        System.out.println("\nBUILDER PATTERN: print build message object");
         Message message = Message.builder().id(4L)
                 .type(MessageType.TEXT)
                 .addMessageText("Hello. ").addMessageText("My name is ")
@@ -57,12 +57,12 @@ public class Demonstration {
     }
 
     public static void demonstrateChainOfResponsibility() {
-        System.out.println("CHAIN OF RESPONSIBILITY PATTERN: create filter chain and filter stream of 100 random tasks");
+        System.out.println("\nCHAIN OF RESPONSIBILITY PATTERN: create filter chain, filter stream of 100 random tasks and print filtered");
         ChainOfResponsibilityDemonstration.demonstrateChainOfResponsibility();
     }
 
     public static void demonstrateDecorator() {
-        System.out.println("DECORATOR PATTERN: create and use console logger writer with file and message date format decorators");
+        System.out.println("\nDECORATOR PATTERN: create console logger writer with decorators and log two messages (one wont be logged)");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
         ConsoleLoggerWriter consoleLoggerWriter = new ConsoleLoggerWriter();
         FileLoggerWriterDecorator fileLoggerWriter = new FileLoggerWriterDecorator(consoleLoggerWriter, "log.txt");
@@ -74,14 +74,14 @@ public class Demonstration {
     }
 
     public static void demonstrateProxy() {
-        System.out.println("PROXY PATTERN: save audio, get cached audio");
+        System.out.println("\nPROXY PATTERN: save audio, get cached audio");
         AudioService audioService = new AudioService(new AudioCacheProxy(new RemoteAudioStorage()));
         Audio saveAudio = audioService.saveAudio(new Audio(0L, "song.mp3", new byte[0]));
         audioService.downloadAudio(saveAudio.getId());
     }
 
     public static void demonstrateStrategy() {
-        System.out.println("STRATEGY PATTERN: printer using standard print strategy and choose strategy by key");
+        System.out.println("\nSTRATEGY PATTERN: printer using standard print strategy and choose strategy by key");
         Printer printer = new Printer();
         Document document = new Document(1L, "example.txt", "Document text.");
         printer.print(document);
