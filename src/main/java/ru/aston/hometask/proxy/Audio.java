@@ -1,4 +1,4 @@
-package ru.aston.hometask.strategy;
+package ru.aston.hometask.proxy;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Document {
+public class Audio {
     private Long id;
     private String name;
-    private String text;
+    private byte[] audioData;
 
 }

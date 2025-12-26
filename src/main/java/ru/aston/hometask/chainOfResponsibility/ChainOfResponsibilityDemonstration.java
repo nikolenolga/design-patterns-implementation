@@ -15,13 +15,13 @@ public class ChainOfResponsibilityDemonstration {
     private static final LocalDateTime[] DEADLINE_ARRAY = {LocalDateTime.now(), LocalDateTime.MIN, LocalDateTime.MAX};
 
     public static void demonstrateChainOfResponsibility() {
-        CompletionTaskFilter rootTaskFilter = createCompletionTaskFilterChain();
-        generateRandomTasksStream().filter(rootTaskFilter::filter)
+        CompletionTaskFilter taskFilterChain = createDemonstraitionTaskFilterChain();
+        generateRandomTasksStream().filter(taskFilterChain::filter)
                 .toList()
                 .forEach(System.out::println);
     }
 
-    private static CompletionTaskFilter createCompletionTaskFilterChain() {
+    private static CompletionTaskFilter createDemonstraitionTaskFilterChain() {
         CompletionTaskFilter rootTaskFilter = new CompletionTaskFilter(false);
         rootTaskFilter.setNextHandler(new ArchivedTaskFilter(false))
                 .setNextHandler(new TopLevelTaskFilter())

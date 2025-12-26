@@ -6,9 +6,12 @@ import ru.aston.hometask.adapter.UserStorage;
 import ru.aston.hometask.adapter.UserStorageRepositoryAdapter;
 import ru.aston.hometask.builder.Message;
 import ru.aston.hometask.chainOfResponsibility.ChainOfResponsibilityDemonstration;
-import ru.aston.hometask.proxy.DocumentCacheProxy;
-import ru.aston.hometask.proxy.DocumentService;
-import ru.aston.hometask.proxy.RemoteDocumentStorage;
+import ru.aston.hometask.decorator.DecoratorDemonstration;
+import ru.aston.hometask.decorator.LoggerLevel;
+import ru.aston.hometask.proxy.Audio;
+import ru.aston.hometask.proxy.AudioCacheProxy;
+import ru.aston.hometask.proxy.AudioService;
+import ru.aston.hometask.proxy.RemoteAudioStorage;
 import ru.aston.hometask.strategy.Document;
 import ru.aston.hometask.strategy.Printer;
 import ru.aston.hometask.strategy.StrategyKey;
@@ -17,11 +20,12 @@ import java.time.LocalDateTime;
 
 public class Demonstration {
     public static void main(String[] args) {
-        demonstrateStrategy();
-        demonstrateBuilder();
-        demonstrateChainOfResponsibility();
-        demonstrateProxy();
-        demonstrateAdapter();
+//        demonstrateStrategy();
+//        demonstrateBuilder();
+//        demonstrateChainOfResponsibility();
+//        demonstrateProxy();
+//        demonstrateAdapter();
+        demonstrateDecorator();
     }
 
     public static void demonstrateStrategy() {
@@ -50,11 +54,10 @@ public class Demonstration {
     }
 
     public static void demonstrateProxy() {
-        System.out.println("PROXY PATTERN: save document, get cached document");
-        DocumentService documentService = new DocumentService(new DocumentCacheProxy(new RemoteDocumentStorage()));
-
-        Document saveDocument = documentService.saveDocument(new Document(0L, "text.txt", "Document text example"));
-        documentService.downloadDocument(saveDocument.getId());
+        System.out.println("PROXY PATTERN: save audio, get cached audio");
+        AudioService audioService = new AudioService(new AudioCacheProxy(new RemoteAudioStorage()));
+        Audio saveAudio = audioService.saveAudio(new Audio(0L, "song.mp3", new byte[0]));
+        audioService.downloadAudio(saveAudio.getId());
         System.out.println("------------------------------");
     }
 
@@ -67,6 +70,13 @@ public class Demonstration {
         UserService userService = new UserService(new UserStorageRepositoryAdapter(userStorage));
         userService.findById(1L).ifPresent(System.out::println);
         userService.findById(2L).ifPresent(System.out::println);
+        System.out.println("------------------------------");
+    }
+
+
+    public static void demonstrateDecorator() {
+        System.out.println("Decorator PATTERN: create and use user service with adapter");
+        DecoratorDemonstration.demonstrateDecorator();
         System.out.println("------------------------------");
     }
 }
